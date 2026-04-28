@@ -63,4 +63,27 @@ class MyStackTest {
 		assertTrue(stack.isEmpty());
 		assertEquals(0, stack.size());
 	}
+
+	@Test
+	void pushShouldAllowNull() {
+		MyStack<String> stack = new MyStack<>();
+
+		stack.push(null);
+
+		assertEquals(1, stack.size());
+		assertNull(stack.peek());
+	}
+
+	@Test
+	void stackShouldFollowLifoOrder() {
+		MyStack<Integer> stack = new MyStack<>();
+
+		stack.push(1);
+		stack.push(2);
+		stack.push(3);
+
+		assertEquals(3, stack.pop());
+		assertEquals(2, stack.pop());
+		assertEquals(1, stack.pop());
+	}
 }
